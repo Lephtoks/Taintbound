@@ -4,8 +4,6 @@ accessible class net/minecraft/registry/Registries$Initializer
 
 accessible method net/minecraft/registry/Registries create (Lnet/minecraft/registry/RegistryKey;Lnet/minecraft/registry/Registries$Initializer;)Lnet/minecraft/registry/Registry;
 
-accessible field net/minecraft/client/MinecraftClient uptimeInTicks F
-
 accessible field net/minecraft/client/render/entity/model/EntityModelLayers LAYERS Ljava/util/Set;
 
 accessible field net/minecraft/client/gui/DrawContext guiAtlasManager Lnet/minecraft/client/texture/GuiAtlasManager;
