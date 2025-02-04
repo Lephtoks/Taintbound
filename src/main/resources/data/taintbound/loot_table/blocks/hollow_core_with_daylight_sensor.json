@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:block",
+    "pools": [
+        {
+            "bonus_rolls": 0.0,
+            "conditions": [
+                {
+                    "condition": "minecraft:survives_explosion"
+                }
+            ],
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "taintbound:hollow_core_with_daylight_sensor"
+                }
+            ],
+            "rolls": 1.0
+        }
+    ],
+    "random_sequence": "taintbound:blocks/hollow_core_with_daylight_sensor"
+}

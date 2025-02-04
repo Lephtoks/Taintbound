@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "taintbound:tainted_table",
+    "taintbound:hollow_core",
+    "taintbound:hollow_core_with_daylight_sensor"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "description": {
+    "translate": "enchantments.taintbound.tainted_sweeping_edge",
+    "color": "light_purple"
+  },
+  "exclusive_set": "minecraft:sweeping_edge",
+  "supported_items": "#minecraft:enchantable/sword",
+  "weight": 10,
+  "max_level": 24,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 10
+  },
+  "max_cost": {
+    "base": 51,
+    "per_level_above_first": 10
+  },
+  "anvil_cost": 1,
+  "slots": [
+    "mainhand"
+  ],
+  "effects": {
+    "taintbound:random_damage":
+      {
+        "weights": [
+          3, 2, 1
+        ],
+        "modifiers": [
+          10, 1, 0.5
+        ]
+      }
+  }
+}

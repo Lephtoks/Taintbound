@@ -1,0 +1,15 @@
+{
+  "name": "Tainted infinity",
+  "icon": "minecraft:enchanted_book",
+  "category": "taintbound:enchantments",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Вас очень докучают ведьмы и визеры. Вам теперь очень хочется докучать им.$(br2)Вы решили найти способ контролируемо инвертировать эффекты зелий, чтобы достичь этого эффекта, за основу было взято зачарование бесконечности. Вам удалось извратить ее эффект и перенести работу на эффекты зелий."
+    },
+    {
+      "type": "taintbound:table",
+      "recipe": "taintbound:taint/infinity"
+    }
+  ]
+}

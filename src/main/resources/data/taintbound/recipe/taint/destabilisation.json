@@ -1,0 +1,14 @@
+{
+  "type": "taintbound:tainted_table",
+  "ingredients": [
+    { "item": "minecraft:fermented_spider_eye" },
+    { "item": "taintbound:negative_crystal" }
+  ],
+  "enchantments": {
+    "levels": {}
+  },
+  "result": {
+    "levels": {
+      "taintbound:destabilisation":  1}
+  }
+}

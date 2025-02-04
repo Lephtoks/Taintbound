@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "taintbound:hollow_core"
+    },
+    {
+      "item": "minecraft:daylight_detector"
+    }
+  ],
+  "result": {
+    "id": "taintbound:hollow_core_with_daylight_sensor"
+  }
+}

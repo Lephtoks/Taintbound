@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_top",
+	"textures": {
+		"side": "taintbound:block/hollow_core_side",
+		"top": "taintbound:block/hollow_core_top"
+	}
+}

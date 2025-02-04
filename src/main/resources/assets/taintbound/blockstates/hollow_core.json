@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "taintbound:block/hollow_core" }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Tainted sweeping edge",
+  "icon": "minecraft:enchanted_book",
+  "category": "taintbound:enchantments",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Your nervousness is making itself felt. You often use weapons ineffectively, not giving yourself a break before attacking. It seems you've come up with something...$(br2)In an attempt not to lose strength from the attack, you have found a way to reduce their consumption. As a base was taken \"sweeping edge\". By redirecting actions of enchantment, you were even able to exceed your task!"
+    },
+    {
+      "type": "taintbound:table",
+      "recipe": "taintbound:taint/sweeping_edge"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The new \"sweeping edge\", instead of increasing damage to others, now redirects forces into you, speeding up reload and damage to the target. Thus, enchantment strengthens itself over time. But it is better not to delay, because the effect is very unstable."
+    }
+  ]
+}

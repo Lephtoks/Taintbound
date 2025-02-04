@@ -1,0 +1,38 @@
+{
+  "block.taintbound.tainted_table": "Tainted table",
+  "block.taintbound.tainted_bookshelf": "Tainted bookshelf",
+  "block.taintbound.hollow_core": "Hollow core",
+  "block.taintbound.hollow_core_with_daylight_sensor": "Hollow core with daylight sensor",
+  "item.taintbound.chaotic_dust": "Chaotic dust",
+  "item.taintbound.positive_crystal": "Flare crystal",
+  "item.taintbound.negative_crystal": "Nebula crystal",
+  "item.taintbound.hollow_crystal": "Hollow crystal",
+  "item.taintbound.dark_grimoire": "Dark grimoire [WIP]",
+  "item.taintbound.broken_enchantment_ability": "Unable to enchant!",
+  "enchantments.taintbound.tainted_efficiency": "Efficiency?",
+  "enchantments.taintbound.tainted_infinity": "Infinity?",
+  "enchantments.taintbound.tainted_sharpness": "Sharpness?",
+  "enchantments.taintbound.tainted_sweeping_edge": "Sweeping edge?",
+  "enchantments.taintbound.destabilisation": "Destabilisation",
+  "death.attack.taintbound.melt.message": "%s was turned into plasma",
+
+  "tag.item.taintbound.heat_reduce": "Heat reducers",
+  "emi.category.taintbound.taint": "Taint",
+  "emi.category.taintbound.hollow_core": "Infusion",
+  "emi.category.taintbound.challenge": "Challenge",
+  "emi.category.taintbound.destabilisation": "Destabilisation",
+
+  "challenges.taintbound.item":  "Sacrifice",
+  "challenges.taintbound.entity_kill":  "Kill",
+
+  "advancements.taintbound.root_title": "Revelations",
+  "advancements.taintbound.root": "The reverse of the medal",
+  "advancements.taintbound.alpha_title": "The First",
+  "advancements.taintbound.alpha": "Get alpha charge on any tainted enchantment",
+  "advancements.taintbound.infinity_title": "Permutation",
+  "advancements.taintbound.infinity": "Pass the opposite of your effects to another using tainted infinity",
+  "advancements.taintbound.sweep_title": "Peace of cake",
+  "advancements.taintbound.sweep": "Make a successful attack 20 times in a row with tainted sweeping edge",
+  "advancements.taintbound.in_the_core_title": "To the core",
+  "advancements.taintbound.in_the_core": "Your temperature will be off the charts..."
+}

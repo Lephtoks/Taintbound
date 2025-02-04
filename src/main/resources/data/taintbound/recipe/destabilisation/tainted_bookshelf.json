@@ -1,0 +1,8 @@
+{
+  "type": "taintbound:destabilisation",
+  "ingredient": {"item": "minecraft:bookshelf" },
+  "cost": 1,
+  "result": {
+    "id": "taintbound:tainted_bookshelf", "count": 1
+  }
+}

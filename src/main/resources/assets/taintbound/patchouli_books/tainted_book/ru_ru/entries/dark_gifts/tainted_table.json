@@ -1,0 +1,23 @@
+{
+  "name": "Tainted enchantment table",
+  "icon": "taintbound:tainted_table",
+  "category": "taintbound:dark_gifts",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "taintbound:tainted_table"
+      },
+      "text": "Порченый стол зачарований - важнейший блок мода. В нем создаются новые предметы и зачарования."
+
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "taintbound:tainted_table"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Стол способен извлекать из предметов зачарования, не давая еще раз зачаровать до момента возврата зачарования. $(br2) Стол вмещает вплоть до 8 предметов, которые будут вращаться вокруг."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:blaze_powder",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.taintbound.in_the_core_title"
+    },
+    "description": {
+      "translate": "advancements.taintbound.in_the_core"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "taintbound:revelations/root",
+  "criteria": {
+    " ": {
+      "trigger": "taintbound:heat_value",
+      "conditions": {
+        "value": 1000
+      }
+    }
+  }
+}

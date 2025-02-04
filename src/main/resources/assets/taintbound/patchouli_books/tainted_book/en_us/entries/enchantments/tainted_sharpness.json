@@ -1,0 +1,19 @@
+{
+  "name": "Tainted sharpness",
+  "icon": "minecraft:enchanted_book",
+  "category": "taintbound:enchantments",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "While walking through one village, you met a villager who offered to play a game for emeralds. You were constantly losing, but you didn't have any emeralds, so you paid with slaps in the face. When you finally won, you couldn't resist slapping a villager with glee. He obviously didn't like this outcome, because he planned to pay with emeralds, so the golem drove you out of the village, almost killing you. That's where the idea came to you."
+    },
+    {
+      "type": "taintbound:table",
+      "recipe": "taintbound:taint/sharpness"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The situation that occurred became the reason for the creation of a new enchantment, which was based on sharpness. You failed to go against the law of conservation of energy, or...? By hiding the different states of the weapon in the time streams: the stronger and the weaker, you were able to circumvent the restrictions. Now your weapon is capable of dealing huge damage, or minimal. A complete accident."
+    }
+  ]
+}

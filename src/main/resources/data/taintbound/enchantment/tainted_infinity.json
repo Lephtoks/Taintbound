@@ -1,0 +1,33 @@
+{
+  "description": {
+    "translate": "enchantments.taintbound.tainted_infinity",
+    "color": "light_purple"
+  },
+  "exclusive_set": "minecraft:infinity",
+  "supported_items": "#minecraft:enchantable/bow",
+  "weight": 10,
+  "max_level": 1,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 10
+  },
+  "max_cost": {
+    "base": 51,
+    "per_level_above_first": 10
+  },
+  "anvil_cost": 1,
+  "slots": [
+    "mainhand"
+  ],
+  "effects": {
+    "minecraft:projectile_spawned": [
+      {
+        "effect": {
+          "type": "taintbound:add_negated_effects",
+          "duration": 0,
+          "amplifier": 2
+        }
+      }
+    ]
+  }
+}

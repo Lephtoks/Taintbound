@@ -1,0 +1,8 @@
+{
+  "name": "The diary of taint",
+  "landing_text": "Welcome to Taintbound",
+  "version": 1,
+  "creative_tab": "minecraft:tools_and_utilities",
+  "use_resource_pack": true,
+  "model": "taintbound:tainted_book"
+}

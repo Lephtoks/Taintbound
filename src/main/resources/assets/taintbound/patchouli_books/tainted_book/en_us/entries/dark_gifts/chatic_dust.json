@@ -1,0 +1,15 @@
+{
+  "name": "Chaotic dust",
+  "icon": "taintbound:chaotic_dust",
+  "category": "taintbound:dark_gifts",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Chaotic dust store particles of chaos and available to transfer it to make tainted enchantments more powerful."
+    },
+    {
+      "type": "taintbound:destabilisation",
+      "recipe": "taintbound:destabilisation/chaotic_dust"
+    }
+  ]
+}

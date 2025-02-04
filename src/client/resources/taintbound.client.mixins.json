@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "com.lephtoks.mixin.client",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ClientPlayerEntityMixin",
+    "DrawContextMixin",
+    "EntityModelsMixin",
+    "InGameHudMixin",
+    "MinecraftClientMixin",
+    "SplashMixin",
+    "TooltipComponentMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Tainted efficiency",
+  "icon": "minecraft:enchanted_book",
+  "category": "taintbound:enchantments",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "One day, after digging in the mines for a long time, you get bored of it all. You experimented with high temperatures that could melt most materials. You used an efficiency enchantment as a base, and a slowness potion as a catalyst, along with fermented spider's eye."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The enchantment you created heats the material in certain places to unattainable temperatures, which breaks the molecular bonds. Unfortunately, you were unable to redirect all the energy from the tool, causing a small portion of it to accumulate, leaving the possibility of burns."
+    },
+    {
+      "type": "taintbound:table",
+      "recipe": "taintbound:taint/efficiency"
+    }
+  ]
+}

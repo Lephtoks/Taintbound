@@ -1,0 +1,10 @@
+{
+  "type": "taintbound:hollow_core_infusion",
+  "ingredient": {
+    "item":"taintbound:hollow_crystal"
+  },
+  "cost": 40000,
+  "result": {
+    "id": "taintbound:positive_crystal", "count": 1
+  }
+}

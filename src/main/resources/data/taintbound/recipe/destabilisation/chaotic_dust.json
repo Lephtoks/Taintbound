@@ -1,0 +1,10 @@
+{
+  "type": "taintbound:destabilisation",
+  "ingredient": {
+    "tag":"c:dusts"
+  },
+  "cost": 1,
+  "result": {
+    "id": "taintbound:chaotic_dust", "count": 1
+  }
+}

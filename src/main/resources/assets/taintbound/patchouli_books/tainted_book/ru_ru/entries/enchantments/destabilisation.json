@@ -1,0 +1,19 @@
+{
+  "name": "Destabilisation",
+  "icon": "minecraft:enchanted_book",
+  "category": "taintbound:enchantments",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Вас постоянно терзают сомнения, что во всем есть свой нераскрытый потенциал. Порядок всегда ограничивает ваши возможности, так что вы смогли найти способ привести его к хаосу.$(br2)Дестабилизация позволяет вам придавать предметам очень отличные от их оригинала формы."
+    },
+    {
+      "type": "taintbound:table",
+      "recipe": "taintbound:taint/destabilisation"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Иногда бывает слишком много порядка и обычная дестабилизация уже не справляется."
+    }
+  ]
+}

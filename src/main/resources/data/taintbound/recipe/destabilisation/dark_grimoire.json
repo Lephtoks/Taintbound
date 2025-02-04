@@ -1,0 +1,10 @@
+{
+  "type": "taintbound:destabilisation",
+  "ingredient": {
+    "item": "minecraft:book"
+  },
+  "cost": 2,
+  "result": {
+    "id": "taintbound:dark_grimoire", "count": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Tainted bookshelf",
+  "icon": "taintbound:tainted_bookshelf",
+  "category": "taintbound:dark_gifts",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Этот новый вид книжных полок способен увеличивать хаос окружающей среды для более страшных ритуалов... "
+    },
+    {
+      "type": "taintbound:destabilisation",
+      "recipe": "taintbound:destabilisation/tainted_bookshelf"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "package": "com.lephtoks.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "BlockMixin",
+    "DamageSourcesMixin",
+    "EnchantmentMixin",
+    "ItemEntityMixin",
+    "ItemStackMixin",
+    "LivingEntityMixin",
+    "PersistentProjectileEntityMixin",
+    "PlayerMixin",
+    "RegistriesMixin",
+    "StatusEffectInstanceMixin",
+    "TooltipMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Destabilisation",
+  "icon": "minecraft:enchanted_book",
+  "category": "taintbound:enchantments",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "You are constantly plagued by the feeling that everything has untapped potential. Order always limits your possibilities, so you have found a way to turn it into chaos.$(br2)Destabilisation allows you to give an items a very different shape."
+    },
+    {
+      "type": "taintbound:table",
+      "recipe": "taintbound:taint/destabilisation"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Sometimes there is too much order and the usual destabilisation doesn't work."
+    }
+  ]
+}

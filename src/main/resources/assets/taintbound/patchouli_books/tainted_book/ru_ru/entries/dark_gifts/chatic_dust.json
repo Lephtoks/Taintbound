@@ -1,0 +1,15 @@
+{
+  "name": "Хаотичная пыль",
+  "icon": "taintbound:chaotic_dust",
+  "category": "taintbound:dark_gifts",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Эта пыль хранит в себе частичку хаоса, который она способна передавать, тем самым, давая возможность усиливать некоторые порченые зачарования."
+    },
+    {
+      "type": "taintbound:destabilisation",
+      "recipe": "taintbound:destabilisation/chaotic_dust"
+    }
+  ]
+}

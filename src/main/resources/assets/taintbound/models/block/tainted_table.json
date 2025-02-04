@@ -1,0 +1,23 @@
+{
+	"parent": "minecraft:block/block",
+	"textures": {
+		"1": "taintbound:block/tainted_table_bottom",
+		"2": "taintbound:block/tainted_table_side",
+		"3": "taintbound:block/tainted_table_top",
+		"particle": "taintbound:block/tainted_table_top"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 12, 16],
+			"faces": {
+				"north": {"uv": [0, 4, 16, 16], "texture": "#2", "cullface": "north" },
+				"east": {"uv": [0, 4, 16, 16], "texture": "#2", "cullface": "east" },
+				"south": {"uv": [0, 4, 16, 16], "texture": "#2", "cullface": "south" },
+				"west": {"uv": [0, 4, 16, 16], "texture": "#2", "cullface": "west" },
+				"up": {"uv": [0, 0, 16, 16], "texture": "#3"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#1", "cullface": "down" }
+			}
+		}
+	]
+}

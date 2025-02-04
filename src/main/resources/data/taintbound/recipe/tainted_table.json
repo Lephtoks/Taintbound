@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " S ",
+    "STS",
+    " S "
+  ],
+  "key": {
+    "T": {
+      "item": "minecraft:enchanting_table"
+    },
+    "S": {
+      "item": "minecraft:sculk"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "taintbound:tainted_table"
+  },
+  "show_notification": true
+}

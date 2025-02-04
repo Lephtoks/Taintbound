@@ -1,0 +1,13 @@
+{
+  "components": [
+    {
+      "type": "patchouli:custom",
+      "class": "com.lephtoks.client.patchouli.TableCraftComponent",
+      "rx": 95,
+      "ry": 118,
+      "x": -1,
+      "y": 21,
+      "recipe_name": "#recipe"
+    }
+  ]
+}

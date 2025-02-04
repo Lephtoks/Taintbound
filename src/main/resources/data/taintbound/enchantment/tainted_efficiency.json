@@ -1,0 +1,80 @@
+{
+  "description": {
+    "translate": "enchantments.taintbound.tainted_efficiency",
+    "color": "light_purple"
+  },
+  "exclusive_set": "minecraft:efficiency",
+  "supported_items": "#minecraft:enchantable/mining",
+  "weight": 10,
+  "max_level": 24,
+  "min_cost": {
+    "base": 1,
+    "per_level_above_first": 10
+  },
+  "max_cost": {
+    "base": 51,
+    "per_level_above_first": 10
+  },
+  "anvil_cost": 1,
+  "slots": [
+    "mainhand"
+  ],
+  "effects": {
+    "taintbound:break_block": [
+      {
+        "effect": {
+          "type": "taintbound:break_adjacent",
+          "percent": {
+            "type": "minecraft:fraction",
+            "numerator": {
+              "type": "minecraft:linear",
+              "base": 337,
+              "per_level_above_first": -13
+            },
+            "denominator": {
+              "type": "minecraft:linear",
+              "base": 1,
+              "per_level_above_first": 1
+            }
+          }
+        }
+      },
+      {
+        "effect": {
+          "type": "taintbound:add_heat",
+          "value": {
+            "type": "minecraft:linear",
+            "base": 48,
+            "per_level_above_first": -2
+          }
+        }
+      }
+    ],
+    "minecraft:tick": [
+      {
+        "effect": {
+          "type": "minecraft:spawn_particles",
+          "particle": {
+            "type": "minecraft:lava"
+          },
+          "horizontal_position": {
+            "type": "in_bounding_box"
+          },
+          "vertical_position": {
+            "type": "entity_position"
+          },
+          "horizontal_velocity": {},
+          "vertical_velocity": {},
+          "speed": 1
+        },
+        "requirements": {
+          "condition": "minecraft:random_chance",
+          "chance": {
+            "type": "taintbound:heat",
+            "value": 0
+          }
+        }
+      }
+    ]
+  }
+}

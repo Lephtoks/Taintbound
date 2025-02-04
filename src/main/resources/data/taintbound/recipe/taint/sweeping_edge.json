@@ -1,0 +1,19 @@
+{
+  "type": "taintbound:tainted_table",
+  "ingredients": [
+    { "item": "minecraft:gold_block" },
+    { "item": "minecraft:prismarine" },
+    { "item": "minecraft:prismarine" },
+    { "item": "minecraft:wind_charge" },
+    { "item": "minecraft:diamond" },
+    { "item": "minecraft:diamond" },
+    { "item": "minecraft:diamond" }
+  ],
+  "enchantments": {
+    "levels": {"minecraft:sweeping_edge":  2}
+  },
+  "result": {
+    "levels": {
+      "taintbound:tainted_sweeping_edge":  24}
+  }
+}

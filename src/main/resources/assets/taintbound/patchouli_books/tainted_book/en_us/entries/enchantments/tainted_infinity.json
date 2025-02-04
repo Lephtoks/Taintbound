@@ -1,0 +1,15 @@
+{
+  "name": "Tainted infinity",
+  "icon": "minecraft:enchanted_book",
+  "category": "taintbound:enchantments",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "You have always been got disturbed by witches and withers. Now YOU want to disturb them! $(br2)You decided to find the way to invert potion effects. To reach this goal, as a base was taken infinity enchantment. You've managed to corrupt its effects and make it work with potions"
+    },
+    {
+      "type": "taintbound:table",
+      "recipe": "taintbound:taint/infinity"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_sword",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.taintbound.sweep_title"
+    },
+    "description": {
+      "translate": "advancements.taintbound.sweep"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "taintbound:revelations/root",
+  "criteria": {
+    " ": {
+      "trigger": "taintbound:gold_ratio",
+      "conditions": {
+        "combo": 20
+      }
+    }
+  },
+  "rewards": {
+    "experience": 10
+  }
+}

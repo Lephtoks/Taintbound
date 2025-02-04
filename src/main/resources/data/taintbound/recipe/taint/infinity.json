@@ -1,0 +1,19 @@
+{
+  "type": "taintbound:tainted_table",
+  "ingredients": [
+    { "item": "minecraft:fermented_spider_eye", "count": 1, "tag": {} },
+    { "item": "minecraft:netherite_scrap", "count": 1, "tag": {} },
+    { "item": "minecraft:emerald_block", "count": 1, "tag": {} },
+    { "item": "minecraft:totem_of_undying", "count": 1, "tag": {} },
+    { "item": "minecraft:diamond", "count": 1, "tag": {} },
+    { "item": "minecraft:blaze_powder", "count": 1, "tag": {} },
+    { "item": "minecraft:brewing_stand", "count": 1, "tag": {} }
+  ],
+  "enchantments": {
+    "levels": {"minecraft:infinity":  1}
+  },
+  "result": {
+    "levels": {
+      "taintbound:tainted_infinity":  1}
+  }
+}

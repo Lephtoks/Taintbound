@@ -1,0 +1,29 @@
+{
+  "display": {
+    "icon": {
+      "id": "taintbound:tainted_table",
+      "count": 1
+    },
+    "background": "taintbound:textures/block/tainted_bookshelf.png",
+    "title": {
+      "translate": "advancements.taintbound.root_title"
+    },
+    "description": {
+      "translate": "advancements.taintbound.root"
+    },
+    "show_toast": false,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    " ": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "taintbound:tainted_table"
+          }
+        ]
+      }
+    }
+  }
+}
