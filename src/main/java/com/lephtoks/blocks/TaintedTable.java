@@ -175,7 +175,7 @@ public class TaintedTable extends BlockWithEntity {
                 else {
                     return ActionResult.PASS;
                 }
-            } // TODO Book
+            }
             else if ((ict = EnchantmentHelper.getEnchantments(item)) != ItemEnchantmentsComponent.DEFAULT) {
                 if (entity.enchIsEmpty()) {
                     entity.loadEnchantmentComponent(ict);
