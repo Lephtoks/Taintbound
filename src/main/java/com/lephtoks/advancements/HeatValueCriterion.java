@@ -20,7 +20,7 @@ public class HeatValueCriterion extends AbstractCriterion<HeatValueCriterion.Con
     }
 
     public void trigger(ServerPlayerEntity player) {
-        this.trigger(player, (conditions) -> conditions.matches(((PlayerDataAccessor) player).getHeat()));
+        this.trigger(player, (conditions) -> conditions.matches(((PlayerDataAccessor) player).taintedEnchantments$getHeat()));
     }
 
     public record Conditions(Optional<LootContextPredicate> player, double value) implements AbstractCriterion.Conditions {
