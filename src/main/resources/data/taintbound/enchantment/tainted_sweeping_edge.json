@@ -24,16 +24,36 @@
       {
         "attribute": "minecraft:generic.attack_speed",
         "id": "taintbound:tainted_sweeping_edge",
-        "amount": -1,
-        "operation": "add_value"
+        "amount": {
+          "type": "minecraft:linear",
+          "base": -0.625,
+          "per_level_above_first": -0.012
+        },
+        "operation": "add_multiplied_total"
       }
     ],
     "taintbound:gold_ratio_swing":
       {
-        "spread": 1,
-        "max_combo": 15,
-        "acceleration": 0.1,
-        "damage_mul": 1.5
+        "spread": {
+          "type": "minecraft:linear",
+          "base": 1.5,
+          "per_level_above_first": -0.04347
+        },
+        "max_combo": {
+          "type": "minecraft:linear",
+          "base": 36,
+          "per_level_above_first": -1
+        },
+        "acceleration": {
+          "type": "minecraft:linear",
+          "base": 0.09,
+          "per_level_above_first": 0.0025
+        },
+        "damage_mul": {
+          "type": "minecraft:linear",
+          "base": 5,
+          "per_level_above_first": -0.145
+        }
       }
   }
 }

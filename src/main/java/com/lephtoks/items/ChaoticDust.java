@@ -43,7 +43,8 @@ public class ChaoticDust extends Item {
                     int lvl = stack.getEnchantments().getLevel(entry);
                     if (entry.isIn(TaintedEnchantmentsTag.CAN_GET_CHALLENGE) && lvl > 1) {
                         var builder = ChallengeUtils.getFor(entry);
-                        builder.costAtFirstLevel += (float) Math.pow(builder.costAtFirstLevel * (lvl * -0.3f + 0.11f * lvl * lvl + 1.19f), 0.9);
+                        int charge = entry.value().getMaxLevel() - lvl + 1;
+                        builder.costAtFirstLevel += (float) Math.pow(builder.costAtFirstLevel * (charge * -0.3f + 0.11f * charge * charge + 1.19f), 0.9);
                         stack.set(TaintedEnchantmentsDataComponentTypes.CHALLENGE, builder.build(true, entry));
                         break stop;
                     }
