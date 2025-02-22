@@ -1,0 +1,20 @@
+{
+  "name": "Наполнение",
+  "icon": "taintbound:negative_crystal",
+  "category": "taintbound:rituals",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Оказывается, добыча порчи из воздуха - не только самый простой в реализации способ, но и самый удобный. Захваченные ядром частицы порчи легко реагируют с материей, позволяя преобразовать нужный вам материал. Процесс происходит прямо в механизме, если в нем находится достаточно частиц."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "На следующих страницах вы изобразили важные рецепты материалов, в частости, кристаллов, получаемых при процессе наполнения."
+    },
+    {
+      "type": "taintbound:infusion",
+      "recipe": "taintbound:hollow_core_infusion/negative_crystal",
+      "recipe2": "taintbound:hollow_core_infusion/positive_crystal"
+    }
+  ]
+}

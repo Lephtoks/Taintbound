@@ -1,0 +1,15 @@
+{
+  "name": "Chaos in environment",
+  "icon": "taintbound:chaotic_dust",
+  "category": "taintbound:basics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Taint is an unusual phenomenon closely related to chaos. Taint is found everywhere, but you have not seen any objects transformed by it.$(br2) You know only two types of taint: dark and light. Don't be fooled, light has nothing to do with order, and its properties are almost indistinguishable from dark,"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "not counting other metamorphoses described by complex systems of equations.$(br2) These two types of spoilage neutralize each other upon contact. At the same time, there is no benefit from this, at least not yet. Energy is not released, matter does not change."
+    }
+  ]
+}

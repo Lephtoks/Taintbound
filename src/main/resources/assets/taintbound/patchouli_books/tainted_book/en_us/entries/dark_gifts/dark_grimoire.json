@@ -1,0 +1,15 @@
+{
+  "name": "Dark grimoire [WIP]",
+  "icon": "taintbound:dark_grimoire",
+  "category": "taintbound:dark_gifts",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "For crafts"
+    },
+    {
+      "type": "taintbound:destabilisation",
+      "recipe": "taintbound:destabilisation/dark_grimoire"
+    }
+  ]
+}

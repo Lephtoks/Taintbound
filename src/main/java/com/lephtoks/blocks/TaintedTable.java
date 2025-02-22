@@ -205,14 +205,17 @@ public class TaintedTable extends BlockWithEntity {
                 if (entity.enchIsEmpty()) {
                     entity.enchantments.clear();
                 }
-                if (!entity.enchantments.keySet().containsAll(optionalTaintedTableRecipe.get().getResultEnchant().getEnchantments())) {
+                var enchs = new java.util.HashSet<>(optionalTaintedTableRecipe.get().getResultEnchant().getEnchantments());
+                enchs.retainAll(entity.enchantments.keySet());
+
+                if (optionalTaintedTableRecipe.get().getInputEnchantments().getEnchantments().containsAll(enchs)) {
                     ItemEnchantmentsComponent iecInput = optionalTaintedTableRecipe.get().getInputEnchantments();
                     var builder = optionalTaintedTableRecipe.get().craftEnchant();
-                    for (RegistryEntry<Enchantment> entry : builder.getEnchantments()) {
-                        entity.enchantments.put(entry, builder.getLevel(entry));
-                    }
                     for (RegistryEntry<Enchantment> entry : iecInput.getEnchantments()) {
                         entity.enchantments.remove(entry);
+                    }
+                    for (RegistryEntry<Enchantment> entry : builder.getEnchantments()) {
+                        entity.enchantments.put(entry, builder.getLevel(entry));
                     }
                     entity.clear();
                     this.simulateCraft(entity);

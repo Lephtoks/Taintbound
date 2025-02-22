@@ -1,0 +1,25 @@
+{
+  "name": "Hollow core",
+  "icon": "taintbound:hollow_core",
+  "category": "taintbound:basics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Studying the environment, you noticed that the Sun and Moon constantly exude some taint, light and dark respectively. As you already know, these two types of taint are destroyed upon contact with each other. It is for this reason that the planet has not undergone a metamorphosis."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "taintbound:hollow_core",
+      "recipe2": "taintbound:hollow_core_with_daylight_sensor",
+      "title": "Hollow core"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "To collect this taint, you invented an empty core. You don't even know what you were thinking when you came up with the name. Maybe you assumed that the mechanism would catch particles like apples in a basket? But no."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The mechanism acts as a magnet for taint particles, trapping and preventing them from escaping so that they can later be used for your own purposes. An empty core can be controlled with a redstone signal, so there is a version with a daylight sensor for more accurate control of the required taint."
+    }
+  ]
+}

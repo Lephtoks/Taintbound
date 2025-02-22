@@ -1,0 +1,20 @@
+{
+  "name": "Infusion",
+  "icon": "taintbound:negative_crystal",
+  "category": "taintbound:rituals",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "It turns out that extracting taint from air is not only the easiest way to implement, but also the most convenient. Taint particles trapped in the core easily react with matter, allowing you to transform the material you need. The process takes place right in the mechanism if there are enough particles in it."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "On the following pages, you have depicted important recipes for materials, in particular crystals, obtained during the infusion process."
+    },
+    {
+      "type": "taintbound:infusion",
+      "recipe": "taintbound:hollow_core_infusion/negative_crystal",
+      "recipe2": "taintbound:hollow_core_infusion/positive_crystal"
+    }
+  ]
+}

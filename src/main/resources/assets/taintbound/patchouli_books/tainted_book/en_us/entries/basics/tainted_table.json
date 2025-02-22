@@ -1,0 +1,19 @@
+{
+  "name": "Tainted table",
+  "icon": "taintbound:tainted_table",
+  "category": "taintbound:basics",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Tainted Enchanting Table is the most important block in the mod. It allows for the creation of new items and enchantments."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "taintbound:tainted_table"
+    },
+    {
+      "type": "patchouli:text",
+      "text": " The Tainted Enchanting Table can extract enchantments from enchanted items, rendering the original item un-enchantable. You can transfer enchantments by using an item that has already lost its enchanting ability.$(br2) You can place on the Tainted Enchanting Table up to 8 items, and they will rotate around it."
+    }
+  ]
+}

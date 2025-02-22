@@ -1,0 +1,17 @@
+{
+  "type": "taintbound:tainted_table",
+  "ingredients": [
+    { "item": "minecraft:ender_pearl" },
+    { "item": "minecraft:emerald" },
+    { "item": "taintbound:negative_crystal" },
+    { "item": "taintbound:negative_crystal" },
+    { "item": "taintbound:negative_crystal" }
+  ],
+  "enchantments": {
+    "levels": {"taintbound:destabilisation": 1}
+  },
+  "result": {
+    "levels": {
+      "taintbound:destabilisation":  2}
+  }
+}
