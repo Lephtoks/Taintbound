@@ -1,0 +1,25 @@
+{
+  "components": [
+    {
+      "type": "patchouli:custom",
+      "class": "com.lephtoks.client.patchouli.InfusionComponent",
+      "x": 17,
+      "y": 21,
+      "recipe_name": "#recipe"
+    },
+    {
+      "type": "patchouli:custom",
+      "class": "com.lephtoks.client.patchouli.InfusionComponent",
+      "x": 17,
+      "y": 61,
+      "recipe_name": "#recipe2"
+    },
+    {
+      "type": "patchouli:custom",
+      "class": "com.lephtoks.client.patchouli.InfusionComponent",
+      "x": 17,
+      "y": 101,
+      "recipe_name": "#recipe3"
+    }
+  ]
+}

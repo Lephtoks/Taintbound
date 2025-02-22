@@ -1,12 +1,14 @@
 package com.lephtoks.mixinaccessors;
 
 public interface PlayerDataAccessor {
-    double getHeat();
-    void setHeat(double value);
+    double taintedEnchantments$getHeat();
+    void taintedEnchantments$setHeat(double value);
 
     default void addHeat(double value) {
-        setHeat(getHeat() + value);
-    };
+        taintedEnchantments$setHeat(taintedEnchantments$getHeat() + value);
+    }
 
-    public boolean inGoldRatio(float baseTime, float delta);
+    boolean taintedEnchantments$inGoldRatio(float baseTime, float delta);
+
+    void taintedEnchantments$removeAttackSpeedBuff();
 }

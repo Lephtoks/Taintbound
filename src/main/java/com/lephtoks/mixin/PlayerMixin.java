@@ -25,10 +25,16 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import org.slf4j.Logger;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -37,33 +43,42 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static net.minecraft.world.explosion.Explosion.getExposure;
-
 @Mixin(PlayerEntity.class)
 public abstract class PlayerMixin extends LivingEntity implements PlayerDataAccessor {
-	private static final double POWER = 10;
-	private static final double KNOCKBACK_MODIFIER = 2;
+	@Unique
+	private static final double POWER = 1.25;
 
-	@Shadow abstract
-	PlayerInventory getInventory();
+	@Shadow
+    public abstract PlayerInventory getInventory();
 	protected PlayerMixin(EntityType<? extends LivingEntity> type, World level) {
 		super(type, level);
 	}
+	@Unique
 	private double heat;
+	@Unique
 	private double lastHeat = heat;
+	@Unique
 	private int heatTimer = 0;
+	@Unique
 	private float cd_ticks;
+	@Unique
 	private int combo = 0;
+	@Unique
 	private int combo_unlim = 0;
-	@Shadow abstract float getAttackCooldownProgressPerTick();
+	@Shadow
+    public abstract float getAttackCooldownProgressPerTick();
+
+	@Shadow public abstract void playSound(SoundEvent sound, float volume, float pitch);
+
+	@Shadow @Final private static Logger LOGGER;
 
 	@Override
-	public double getHeat() {
+	public double taintedEnchantments$getHeat() {
 		return this.heat;
 	}
 
 	@Override
-	public void setHeat(double value) {
+	public void taintedEnchantments$setHeat(double value) {
 		this.heat = value;
 		if ((PlayerEntity) (Object) this instanceof ServerPlayerEntity player) {
 			TaintboundAdvancements.HEAT_VALUE.trigger(player);
@@ -84,8 +99,8 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerDataAcce
 	@Inject(at = @At(value = "HEAD"), method = "tick")
 	private void ticking(CallbackInfo callbackInfo) {
 		if (this.getWorld().isClient) return;
-		if (getHeat()>10) {
-			double intensity = 4000 / (getHeat()+99);
+		if (taintedEnchantments$getHeat()>10) {
+			double intensity = 4000 / (taintedEnchantments$getHeat()+99);
 			if (heatTimer > intensity) {
 				damage(((DamageSourcesDataAccessor)getWorld().getDamageSources()).heatDamage(), 0.5f);
 				heatTimer = 0;
@@ -111,8 +126,8 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerDataAcce
 			this.getAttributes().removeModifiers(map);
 		}
 	}
-	public boolean inGoldRatio(float baseTime, float delta) {
-		delta *= 0.5;
+	public boolean taintedEnchantments$inGoldRatio(float baseTime, float delta) {
+		delta *= 0.5F;
 		return Math.abs(((float)this.lastAttackedTicks + baseTime) / this.getAttackCooldownProgressPerTick() - 1 - delta) < delta;
 	}
 	@Inject(method = "attack", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/entity/player/PlayerEntity;getAttackCooldownProgress(F)F", shift = At.Shift.AFTER))
@@ -121,81 +136,71 @@ public abstract class PlayerMixin extends LivingEntity implements PlayerDataAcce
 	}
 	@Inject(method = "attack", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/entity/Entity;damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", shift = At.Shift.BY, by = -3))
 	private void onAttack(Entity target, CallbackInfo ci, @Local(ordinal = 2) boolean bl3, @Local(ordinal = 2) float cd, @Local(ordinal = 3) LocalFloatRef i, @Local(ordinal = 3) boolean bl4) {
-
-		if (target.getWorld() instanceof ServerWorld serverWorld) {
-			ItemStack item = this.getInventory().getMainHandStack();
-			if (bl4 || bl3) {
-				EnchUtils.ifHas(item, TaintedEnchantmentsEffectComponentTypes.GOLD_RATIO_SWING, (effect, level) -> {
-					boolean inGoldRatio = cd_ticks < 1 + effect.spread().getValue(level);
-					if (inGoldRatio) {
-						combo = (int) Math.min(effect.max_combo().getValue(level), combo + 1);
-						combo_unlim += 1;
-						TaintboundAdvancements.GOLD_RATIO.trigger((ServerPlayerEntity) (Object) this, combo_unlim);
+		ItemStack item = this.getInventory().getMainHandStack();
+		if (bl4 || bl3) {
+			EnchUtils.ifHas(item, TaintedEnchantmentsEffectComponentTypes.GOLD_RATIO_SWING, (effect, level) -> {
+				boolean inGoldRatio = cd_ticks < 1 + effect.spread().getValue(level);
+				if (inGoldRatio) {
+					combo = (int) Math.min(effect.max_combo().getValue(level), combo + 1);
+					combo_unlim += 1;
+					if (target.getWorld() instanceof ServerWorld serverWorld) {
+                        //noinspection DataFlowIssue
+                        TaintboundAdvancements.GOLD_RATIO.trigger((ServerPlayerEntity) (Object) this, combo_unlim);
 						HashMultimap<RegistryEntry<EntityAttribute>, EntityAttributeModifier> map = HashMultimap.create();
-						map.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(Identifier.of(TaintboundMod.MOD_ID, "gold_ratio_speed"), effect.acceleration().getValue(level) * combo, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+						float delta = random.nextFloat()*10f;
+						map.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(Identifier.of(TaintboundMod.MOD_ID, "gold_ratio_speed"), effect.acceleration().getValue(level) * Math.max(combo - delta, 0), EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 						this.getAttributes().addTemporaryModifiers(map);
 
 						i.set(i.get() * effect.damage().getValue(level) * Math.max(combo*0.2f, 1));
 						serverWorld.spawnParticles(com.lephtoks.particles.ParticleTypes.CORRUPTION_PARTICLE, target.getX(), target.getY() + target.getHeight() * 0.5f, target.getZ(), 50, 0, 0, 0, 0.2f);
-					} else if (combo!=0) {
-
-						double w = this.getX() - target.getX();
-						double x = this.getEyeY() - target.getY();
-						double y = this.getZ() - target.getZ();
-						double z = Math.sqrt(w * w + x * x + y * y);
-						if (z != 0) {
-
-							w /= z;
-							x /= z;
-							y /= z;
-							double v = Math.sqrt(this.squaredDistanceTo(target.getPos())) / POWER;
-
-							double aa = (1.0 - v) * (double) getExposure(target.getPos(), this) * KNOCKBACK_MODIFIER;
-							double ab = aa * (1.0 - this.getAttributeValue(EntityAttributes.GENERIC_EXPLOSION_KNOCKBACK_RESISTANCE));
-
-							w *= ab;
-							x *= ab;
-							y *= ab;
-							this.setVelocity(this.getVelocity().add(w, x, y));
-						}
-
-						removeAttackSpeedBuff();
 					}
-				});
-			} else if (combo!=0) {
-				removeAttackSpeedBuff();
-			}
-			EnchUtils.ifHas(item, TaintedEnchantmentsEffectComponentTypes.RANDOM_DAMAGE, (effect, level) -> {
-				AtomicInteger sum = new AtomicInteger();
-				List<Integer> weights = effect.weights().stream().map((entry) -> {
-					int v = (int) entry.getValue(level);
-					sum.addAndGet(v);
-					return v;
-				}).toList();
-				Iterator<Integer> iterator = weights.iterator();
-				int sum2 = 0;
-				int t = random.nextInt(sum.get());
-				int ii = 0;
-				while (iterator.hasNext()) {
-					int n = iterator.next();
-					sum2 += n;
-					if (t < sum2) {
-						i.set(i.get() * effect.modifiers().get(ii).getValue(level));
-						return;
-					}
-					ii++;
+				} else if (combo!=0) {
+					knock(target);
+					taintedEnchantments$removeAttackSpeedBuff();
 				}
 			});
+		} else if (combo!=0) {
+			knock(target);
+			taintedEnchantments$removeAttackSpeedBuff();
 		}
+		EnchUtils.ifHas(item, TaintedEnchantmentsEffectComponentTypes.RANDOM_DAMAGE, (effect, level) -> {
+			AtomicInteger sum = new AtomicInteger();
+			List<Integer> weights = effect.weights().stream().map((entry) -> {
+				int v = (int) entry.getValue(level);
+				sum.addAndGet(v);
+				return v;
+			}).toList();
+			Iterator<Integer> iterator = weights.iterator();
+			int sum2 = 0;
+			int t = random.nextInt(sum.get());
+			int ii = 0;
+			while (iterator.hasNext()) {
+				int n = iterator.next();
+				sum2 += n;
+				if (t < sum2) {
+					i.set(i.get() * effect.modifiers().get(ii).getValue(level));
+					return;
+				}
+				ii++;
+			}
+		});
 	}
-	private void removeAttackSpeedBuff() {
+	@Unique
+	private void knock(Entity target) {
+		if (this.getWorld().isClient()) {
+			this.playSound(SoundEvents.ITEM_MACE_SMASH_GROUND);
+		}
+		Vec3d dir = this.getPos().subtract(target.getPos());
+		Vec3d multiply = dir.normalize().multiply(POWER / (Math.max(this.squaredDistanceTo(target.getPos()), 0.8)));
+		this.addVelocityInternal(multiply.add(0, 1, 0));
+	}
+	@Unique
+	public void taintedEnchantments$removeAttackSpeedBuff() {
+		LOGGER.info(String.valueOf(combo));
 		HashMultimap<RegistryEntry<EntityAttribute>, EntityAttributeModifier> map = HashMultimap.create();
 		map.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(Identifier.of(TaintboundMod.MOD_ID, "gold_ratio_speed"), 0, EntityAttributeModifier.Operation.ADD_VALUE));
 		this.getAttributes().removeModifiers(map);
 		combo = 0;
 		combo_unlim = 0;
-	}
-	private void knockingImpulse() {
-
 	}
 }

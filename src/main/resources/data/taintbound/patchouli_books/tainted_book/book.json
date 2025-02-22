@@ -1,6 +1,6 @@
 {
-  "name": "The diary of taint",
-  "landing_text": "Welcome to Taintbound",
+  "name": "item.taintbound.guide_book",
+  "landing_text": "item.taintbound.guide_book.landing",
   "version": 1,
   "creative_tab": "minecraft:tools_and_utilities",
   "use_resource_pack": true,

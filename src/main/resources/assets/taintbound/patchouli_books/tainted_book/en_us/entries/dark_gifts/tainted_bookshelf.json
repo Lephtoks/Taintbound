@@ -1,11 +1,11 @@
 {
-  "name": "Tainted bookshelf",
+  "name": "Tainted bookshelf [WIP]",
   "icon": "taintbound:tainted_bookshelf",
   "category": "taintbound:dark_gifts",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "This bookshelf variant available to increase chaos in tainted enchanting table for more forbidden rituals."
+      "text": "This bookshelf variant available to increase chaos in tainted enchanting table for more forbidden rituals. (Not now... Seriously, it doesn't work)"
 
     },
     {

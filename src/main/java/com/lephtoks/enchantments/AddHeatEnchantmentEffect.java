@@ -19,7 +19,7 @@ public record AddHeatEnchantmentEffect(EnchantmentLevelBasedValue value) impleme
 
     public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity user, Vec3d pos) {
         PlayerDataAccessor data = (PlayerDataAccessor) user;
-        data.setHeat(this.value().getValue(level) + data.getHeat());
+        data.taintedEnchantments$setHeat(this.value().getValue(level) + data.taintedEnchantments$getHeat());
     }
 
     public MapCodec<AddHeatEnchantmentEffect> getCodec() {

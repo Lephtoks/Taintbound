@@ -1,7 +1,7 @@
 {
   "type": "taintbound:destabilisation",
   "ingredient": {
-    "item": "minecraft:book"
+    "item": "minecraft:writable_book"
   },
   "cost": 2,
   "result": {

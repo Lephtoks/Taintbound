@@ -1,24 +1,20 @@
 {
-  "name": "Усиление порченых зачарований",
-  "icon": "taintbound:dragon_head",
+  "name": "Strength ritual",
+  "icon": "minecraft:dragon_head",
   "category": "taintbound:rituals",
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Изначально сила созданных вами новых форм зачарований слишком слаба, поэтому, используя немного хаоса, возможно усиление."
+      "text": "Initially, the power of the new enchantments you created is too weak, so using a little chaos, it is possible to strengthen."
     },
     {
       "type": "patchouli:text",
-      "title": "Осуществление",
-      "text": "Бросьте на землю темный гримуар и инструмент, требующий усиления, а потом рассыпьте немного хаотичного порошка. После этого, в структуре зачарования, незримой глазу, если это возможно, откроется разлом, который, если выполнить определенные требования, закрепится и начнет питать зачарование. По вашим расчетам, усиление возможно ровно 23 раза."
+      "title": "Implementation",
+      "text": "Throw a dark grimoire and a tool that requires strengthening on the ground, and then scatter some chaotic powder. After that, a rift will open in the enchantment structure, invisible to the eye, if possible, which, if certain requirements are met, will consolidate and begin to feed the enchantment. According to your calculations, the gain is possible exactly 23 times."
     },
     {
       "type": "patchouli:text",
-      "text": "В итоге получается, что существует 24 формы для каждого порченого зачарования (с некоторыми исключениями, база которых непригодна для усиления, например, \"бесконечность\"). Каждой форме была присвоена своя буква греческого алфавита. Омега - самая первая форма, наислабейшая. Альфа - последняя форма, наисельнейшая.$(br2) Еще вами было замечено нелинейное увеличение силы."
-    },
-    {
-      "type": "patchouli:text",
-      "text": "Изначально разница между первой и второй формой может быть неразличима, но между последней и предпоследней она колосальна!"
+      "text": "As a result, it turns out that there are 24 forms for each corrupted enchantment (with some exceptions, the base of which is unsuitable for strengthening, for example, \"infinity\"). Each form was assigned its own letter of the Greek alphabet. Omega is the very first form, the weakest. Alpha is the last form, the most important."
     }
   ]
 }

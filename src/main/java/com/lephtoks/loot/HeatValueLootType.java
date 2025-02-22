@@ -20,7 +20,7 @@ public record HeatValueLootType(float value) implements LootNumberProvider {
 
     public float nextFloat(net.minecraft.loot.context.LootContext context) {
         if (context.get(LootContextParameters.THIS_ENTITY) instanceof PlayerEntity player) {
-            double heat = ((PlayerDataAccessor) player).getHeat();
+            double heat = ((PlayerDataAccessor) player).taintedEnchantments$getHeat();
             return heat > 10 ? (float) Math.min((heat) * 0.005f + Math.sqrt(heat) * 0.0025f, 1) : 0;
         }
         else {

@@ -20,7 +20,7 @@ public abstract class ItemStackMixin {
     @Inject(at = @At(value = "HEAD"), method = "finishUsing")
     private void finish(World world, LivingEntity entity, CallbackInfoReturnable<ItemStack> cir) {
         if (entity instanceof PlayerEntity player && Registries.ITEM.getEntry(this.getItem()).isIn(TaintedEnchantmentsItemTags.HEAT_REDUCE)) {
-            ((PlayerDataAccessor) player).addHeat(Math.clamp(((PlayerDataAccessor) player).getHeat() * -0.25f, -200, -20));
+            ((PlayerDataAccessor) player).addHeat(Math.clamp(((PlayerDataAccessor) player).taintedEnchantments$getHeat() * -0.25f, -200, -20));
         }
     }
 }

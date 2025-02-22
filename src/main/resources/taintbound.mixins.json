@@ -12,6 +12,7 @@
     "PersistentProjectileEntityMixin",
     "PlayerMixin",
     "RegistriesMixin",
+    "ServerPlayNetworkHandlerMixin",
     "StatusEffectInstanceMixin",
     "TooltipMixin"
   ],

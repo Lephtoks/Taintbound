@@ -25,8 +25,8 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
 
 	@Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;tick()V"), method = "tick")
 	private void t(CallbackInfo info) {
-		if (heatCD >= 3500 / (((PlayerDataAccessor) this).getHeat() + 99)) {
-			ParticleUtil.spawnParticlesAround(getWorld(), getBlockPos(), (int) Math.ceil(((PlayerDataAccessor) this).getHeat() * 0.00066f), ParticleTypes.LAVA);
+		if (heatCD >= 3500 / (((PlayerDataAccessor) this).taintedEnchantments$getHeat() + 99)) {
+			ParticleUtil.spawnParticlesAround(getWorld(), getBlockPos(), (int) Math.ceil(((PlayerDataAccessor) this).taintedEnchantments$getHeat() * 0.00066f), ParticleTypes.LAVA);
 		}
 		heatCD++;
 	}

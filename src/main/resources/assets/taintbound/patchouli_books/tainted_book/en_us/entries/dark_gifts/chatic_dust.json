@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Chaotic dust store particles of chaos and available to transfer it to make tainted enchantments more powerful."
+      "text": "Chaotic dust store particles of chaos and available to transfer it to make tainted enchantments more powerful. I described it in more detail on the page $(l:taintbound:rituals/challenges)Strength ritual$()"
     },
     {
       "type": "taintbound:destabilisation",

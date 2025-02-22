@@ -1,5 +1,5 @@
 {
-  "name": "Destabilisation",
+  "name": "Дестабилизация",
   "icon": "minecraft:enchanted_book",
   "category": "taintbound:enchantments",
   "pages": [
@@ -14,6 +14,10 @@
     {
       "type": "patchouli:text",
       "text": "Иногда бывает слишком много порядка и обычная дестабилизация уже не справляется."
+    },
+    {
+      "type": "taintbound:table",
+      "recipe": "taintbound:taint/destabilisation2"
     }
   ]
 }

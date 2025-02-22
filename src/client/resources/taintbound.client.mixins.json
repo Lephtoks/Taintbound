@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_21",
   "client": [
     "ClientPlayerEntityMixin",
+    "ClientPlayerInteractionManagerMixin",
     "DrawContextMixin",
     "EntityModelsMixin",
     "InGameHudMixin",
@@ -13,5 +14,5 @@
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  }
 }

@@ -3,6 +3,8 @@
   "block.taintbound.tainted_bookshelf": "Tainted bookshelf",
   "block.taintbound.hollow_core": "Hollow core",
   "block.taintbound.hollow_core_with_daylight_sensor": "Hollow core with daylight sensor",
+  "item.taintbound.guide_book": "The diary of taint",
+  "item.taintbound.guide_book.landing": "Welcome to Taintbound!",
   "item.taintbound.chaotic_dust": "Chaotic dust",
   "item.taintbound.positive_crystal": "Flare crystal",
   "item.taintbound.negative_crystal": "Nebula crystal",

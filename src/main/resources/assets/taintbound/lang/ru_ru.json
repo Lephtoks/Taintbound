@@ -3,6 +3,8 @@
   "block.taintbound.tainted_bookshelf": "Порченая книжная полка",
   "block.taintbound.hollow_core": "Пустое ядро",
   "block.taintbound.hollow_core_with_daylight_sensor": "Пустое ядро с датчиком дневного света",
+  "item.taintbound.guide_book": "Дневник о порче",
+  "item.taintbound.guide_book.landing": "Добро пожаловать в Taintbound!",
   "item.taintbound.chaotic_dust": "Хаотичный порошок",
   "item.taintbound.positive_crystal": "Кристалл вспышки",
   "item.taintbound.negative_crystal": "Кристалл туманности",

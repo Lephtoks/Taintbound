@@ -36,7 +36,7 @@ public abstract class InGameHudMixin {
 	private Identifier injected() {
 		if (this.client.player != null &&
 				EnchUtils.ifHas(this.client.player.getInventory().getMainHandStack(), TaintedEnchantmentsEffectComponentTypes.GOLD_RATIO_SWING, (effect, level) -> {
-					return ((PlayerDataAccessor) this.client.player).inGoldRatio(0, effect.spread().getValue(level));
+					return ((PlayerDataAccessor) this.client.player).taintedEnchantments$inGoldRatio(0, effect.spread().getValue(level));
 				})
 		) {
 			return CROSSHAIR_ATTACK_INDICATOR_FULL_TEXTURE_CORRUPTED;
