@@ -162,12 +162,18 @@ public class TaintedTable extends BlockWithEntity {
                         this.isCrafting = true;
                     }
                     if (item.getItem() == Items.BOOK) {
-                        item = new ItemStack(Items.ENCHANTED_BOOK, 1);
-                        player.getInventory().main.set(player.getInventory().selectedSlot, item);
+                        ItemStack item_new = new ItemStack(Items.ENCHANTED_BOOK, 1);
+                        EnchantmentHelper.set(item_new, entity.createEnchantmentComponent());
+                        if (item.getCount() > 1) {
+                            player.giveItemStack(item_new);
+                            item.decrement(1);
+                        } else {
+                            player.getInventory().main.set(player.getInventory().selectedSlot, item_new);
+                        }
                     } else {
                         item.remove(TaintedEnchantmentsDataComponentTypes.BROKEN_ENCHANTMENT_ABILITY);
+                        EnchantmentHelper.set(item, entity.createEnchantmentComponent());
                     }
-                    EnchantmentHelper.set(item, entity.createEnchantmentComponent());
                     entity.enchantments.clear();
                     entity.updateRecipe();
                     return ActionResult.SUCCESS;
