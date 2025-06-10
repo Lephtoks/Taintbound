@@ -10,6 +10,8 @@ import com.lephtoks.items.TaintedItems;
 import com.lephtoks.loot.ValueLootTypes;
 import com.lephtoks.recipes.TaintboundRecipes;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.network.packet.s2c.play.BlockEventS2CPacket;
+import net.minecraft.network.packet.s2c.play.BlockUpdateS2CPacket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

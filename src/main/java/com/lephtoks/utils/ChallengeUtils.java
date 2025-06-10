@@ -65,7 +65,7 @@ public class ChallengeUtils {
         if (o.isPresent()) {
             RegistryKey<Enchantment> key = o.get();
             if (POOL.containsKey(key)) {
-                return POOL.get(key).shuffle().iterator().next();
+                return POOL.get(key).shuffle().iterator().next().copy();
             } else {
                 TaintboundMod.LOGGER.error("Can not get challenge type for {} because it not set", enchantment.getType().name());
                 return ChallengeComponent.Builder.EMPTY;

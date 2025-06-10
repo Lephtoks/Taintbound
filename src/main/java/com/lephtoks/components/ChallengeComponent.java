@@ -100,11 +100,14 @@ public record ChallengeComponent(boolean showInTooltip, ChallengeType type, floa
         private final ChallengeType challengeType;
         public float costAtFirstLevel;
         public int levelsToAdd;
-        public static Builder EMPTY = new Builder(new ItemChallengeType(Ingredient.ofItems(Items.AIR)), 1, 0);
+        public static Builder EMPTY = new Builder(new ItemChallengeType(Ingredient.ofItems(Items.AIR)), 0, 0);
         public Builder(ChallengeType challengeType, float costAtFirstLevel, int levelsToAdd) {
             this.challengeType = challengeType;
             this.costAtFirstLevel = costAtFirstLevel;
             this.levelsToAdd = levelsToAdd;
+        }
+        public Builder copy() {
+            return new Builder(this.challengeType, this.costAtFirstLevel, this.levelsToAdd);
         }
         public ChallengeComponent build(boolean showInTooltip, RegistryEntry<Enchantment> entry) {
             return new ChallengeComponent(showInTooltip, this.challengeType, this.costAtFirstLevel, 0, entry, this.levelsToAdd);

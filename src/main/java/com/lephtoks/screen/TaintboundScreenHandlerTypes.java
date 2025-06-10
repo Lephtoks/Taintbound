@@ -13,6 +13,7 @@ public class TaintboundScreenHandlerTypes {
     public static final ScreenHandlerType<HollowCoreScreenHandler> HOLLOW_CORE = register("hollow_core", HollowCoreScreenHandler::new);
 
     private static <T extends ScreenHandler> ScreenHandlerType<T> register(String id, ScreenHandlerType.Factory<T> factory) {
-        return Registry.register(Registries.SCREEN_HANDLER, Identifier.of(TaintboundMod.MOD_ID, id), new ScreenHandlerType<>(factory, FeatureSet.empty()));
+        return Registry.register(Registries.SCREEN_HANDLER,
+                Identifier.of(TaintboundMod.MOD_ID, id), new ScreenHandlerType<>(factory, FeatureSet.empty()));
     }
 }

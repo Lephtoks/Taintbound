@@ -1,15 +1,18 @@
 package com.lephtoks.blocks;
 
+import com.lephtoks.TaintboundMod;
 import com.lephtoks.blockentities.TaintedBlockEntityTypes;
 import com.lephtoks.blockentities.TaintedTableBlockEntity;
 import com.lephtoks.components.BrokenEnchantmentAbilityComponent;
 import com.lephtoks.components.TaintedEnchantmentsDataComponentTypes;
 import com.lephtoks.enchantments.TaintedEnchantments;
+import com.lephtoks.network.UpdateTaintedTableS2CPacket;
 import com.lephtoks.recipes.OnePropertiedItemRecipeInput;
 import com.lephtoks.recipes.TaintboundRecipes;
 import com.lephtoks.recipes.taintedtable.EnchantedRecipeInput;
 import com.lephtoks.recipes.taintedtable.TaintedTableRecipe;
 import com.mojang.serialization.MapCodec;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -18,14 +21,21 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.decoration.ItemFrameEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.packet.CustomPayload;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.BlockUpdateS2CPacket;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.particle.ParticleUtil;
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -35,6 +45,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 
 import java.util.Optional;
 import java.util.Set;
@@ -45,6 +56,13 @@ public class TaintedTable extends BlockWithEntity {
     public static final MapCodec<TaintedTable> CODEC = createCodec(TaintedTable::new);
     private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 12, 16);
     private boolean isCrafting;
+
+    @Override
+    protected boolean onSyncedBlockEvent(BlockState state, World world, BlockPos pos, int type, int data) {
+        TaintboundMod.LOGGER.info("AFFF");
+        return super.onSyncedBlockEvent(state, world, pos, type, data);
+    }
+
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
@@ -137,6 +155,7 @@ public class TaintedTable extends BlockWithEntity {
                             player.giveItemStack(currentRecipe.get().value().craft(input, world.getRegistryManager()));
                         }
                         entity.enchantments.remove(destabilisation.get());
+                        entity.updateRecipe();
                         return ActionResult.SUCCESS;
                     }
                 }
@@ -170,6 +189,7 @@ public class TaintedTable extends BlockWithEntity {
                         } else {
                             player.getInventory().main.set(player.getInventory().selectedSlot, item_new);
                         }
+                        entity.updateRecipe();
                     } else {
                         item.remove(TaintedEnchantmentsDataComponentTypes.BROKEN_ENCHANTMENT_ABILITY);
                         EnchantmentHelper.set(item, entity.createEnchantmentComponent());

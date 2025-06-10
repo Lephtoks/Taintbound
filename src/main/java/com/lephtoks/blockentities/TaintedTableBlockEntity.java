@@ -1,10 +1,13 @@
 package com.lephtoks.blockentities;
 
+import com.lephtoks.TaintboundMod;
+import com.lephtoks.network.UpdateTaintedTableS2CPacket;
 import com.lephtoks.recipes.TaintboundRecipes;
 import com.lephtoks.recipes.taintedtable.EnchantedRecipeInput;
 import com.lephtoks.recipes.taintedtable.TaintedTableRecipe;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.UnboundedMapCodec;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
@@ -23,6 +26,7 @@ import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -54,8 +58,16 @@ public class TaintedTableBlockEntity extends BlockEntity implements Inventory {
         EnchantedRecipeInput input = new EnchantedRecipeInput(this.getInventory(), this.createEnchantmentComponent());
         var currentRecipe = world.getRecipeManager().getFirstMatch(TaintboundRecipes.TET_RECIPE, input, world);
         Optional<TaintedTableRecipe> optionalTaintedTableRecipe = currentRecipe.map(RecipeEntry::value);
-
+        sendUpdatePacket(world, pos);
         this.currentRecipe = optionalTaintedTableRecipe.orElse(null);
+    }
+    private void sendUpdatePacket(World world, BlockPos pos) {
+        if (world.isClient) return;
+        NbtCompound nbt = new NbtCompound();
+        this.writeNbt(nbt, world.getRegistryManager());
+        UpdateTaintedTableS2CPacket packet = new UpdateTaintedTableS2CPacket(nbt, pos);
+        world.getPlayers().forEach((p) -> ServerPlayNetworking.send(((ServerPlayerEntity) p), packet));
+
     }
     public ItemEnchantmentsComponent createEnchantmentComponent() {
         ItemEnchantmentsComponent.Builder result = new ItemEnchantmentsComponent.Builder(ItemEnchantmentsComponent.DEFAULT);
@@ -104,8 +116,9 @@ public class TaintedTableBlockEntity extends BlockEntity implements Inventory {
 
     @Override
     public void markDirty() {
+        TaintboundMod.LOGGER.info("Marked");
         super.markDirty();
-        if (this.getWorld() != null && !this.getWorld().isClient() && this.getWorld() instanceof ServerWorld) {
+        if (this.getWorld() instanceof ServerWorld) {
             ((ServerWorld) world).getChunkManager().markForUpdate(getPos());
         }
     }
@@ -178,15 +191,15 @@ public class TaintedTableBlockEntity extends BlockEntity implements Inventory {
     @Override
     public ItemStack removeStack(int slot, int amount) {
         ItemStack itemStack = Inventories.splitStack(this.getInventory(), slot, amount);
-        if (!itemStack.isEmpty()) {
-            this.markDirty();
-        }
+        this.markDirty();
 
         return itemStack;
     }
     @Override
     public ItemStack removeStack(int slot) {
-        return Inventories.removeStack(this.getInventory(), slot);
+        ItemStack itemStack = Inventories.removeStack(this.getInventory(), slot);
+        this.markDirty();
+        return itemStack;
     }
 
     @Override
@@ -204,6 +217,7 @@ public class TaintedTableBlockEntity extends BlockEntity implements Inventory {
     @Override
     public void clear() {
         this.getInventory().clear();
+        this.markDirty();
     }
 
 
